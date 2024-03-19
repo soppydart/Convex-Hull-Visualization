@@ -1,11 +1,12 @@
 import { ChangeEvent, useRef } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
+import { ColorRing } from 'react-loader-spinner'
 import styles from './JarvisMarch.module.css'
 
 function JarvisMarch() {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const { unityProvider, sendMessage } = useUnityContext({
+    const { unityProvider, sendMessage, isLoaded } = useUnityContext({
         loaderUrl: "JarvisMarch/Build/JarvisMarch.loader.js",
         dataUrl: "JarvisMarch/Build/JarvisMarch.data",
         frameworkUrl: "JarvisMarch/Build/JarvisMarch.framework.js",
@@ -71,6 +72,15 @@ function JarvisMarch() {
 
     return <div className={styles.container}>
         <h1>Jarvis March Algorithm</h1>
+        {!isLoaded && <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="color-ring-loading"
+            wrapperStyle={{}}
+            wrapperClass="color-ring-wrapper"
+            colors={['#E40303', '#FF8C00', '#FFED00', '#008026', '#24408E']}
+        />}
         <Unity unityProvider={unityProvider} className={styles.canvas} />
         <div className={styles.initializeButtons}>
             <div className={styles.fileInputContainer}>
