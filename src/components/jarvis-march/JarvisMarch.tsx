@@ -1,9 +1,13 @@
-import { ChangeEvent, useRef } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { ColorRing } from 'react-loader-spinner'
 import styles from './JarvisMarch.module.css'
 
 function JarvisMarch() {
+    const [buttonClicked, setButtonClicked] = useState<{ hasBeenClicked: boolean }>({
+        hasBeenClicked: false,
+    });
+
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const { unityProvider, sendMessage, isLoaded } = useUnityContext({
@@ -14,6 +18,11 @@ function JarvisMarch() {
     });
 
     function handleClickRandom() {
+        if (buttonClicked.hasBeenClicked)
+            return;
+
+        setButtonClicked({ hasBeenClicked: true });
+
         class Point {
             constructor(public x: number, public y: number) { }
         }
@@ -93,7 +102,13 @@ function JarvisMarch() {
                     className={styles.fileInput}
                 />
             </div>
-            <button onClick={() => fileInputRef.current?.click()} className={styles.buttons}>Upload Input File</button>
+            <button onClick={() => {
+                if (buttonClicked.hasBeenClicked)
+                    return;
+                setButtonClicked({ hasBeenClicked: true });
+
+                fileInputRef.current?.click()
+            }} className={styles.buttons}>Upload Input File</button>
             <button onClick={handleClickRandom} className={styles.buttons}>Plot random points</button>
         </div>
     </div >;
