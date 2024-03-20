@@ -1,7 +1,6 @@
 import { ChangeEvent, useRef, useState } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { ColorRing } from 'react-loader-spinner'
-import styles from './JarvisMarch.module.css'
 
 function JarvisMarch() {
     const [buttonClicked, setButtonClicked] = useState<{ hasBeenClicked: boolean }>({
@@ -79,39 +78,56 @@ function JarvisMarch() {
         sendMessage("mainObject", "InitializePoints", -9999);
     }
 
-    return <div className={styles.container}>
-        <h1>Jarvis March Algorithm</h1>
-        {!isLoaded && <ColorRing
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="color-ring-loading"
-            wrapperStyle={{}}
-            wrapperClass="color-ring-wrapper"
-            colors={['#E40303', '#FF8C00', '#FFED00', '#008026', '#24408E']}
-        />}
-        <Unity unityProvider={unityProvider} className={styles.canvas} />
-        <div className={styles.initializeButtons}>
-            <div className={styles.fileInputContainer}>
-                <input
-                    id="file-upload"
-                    ref={fileInputRef}
-                    type="file"
-                    onChange={handleFileChange}
-                    accept=".txt"
-                    className={styles.fileInput}
+    return (
+        <div className="bg-slate-900 min-h-screen">
+            <h1 className='text-5xl font-medium text-white text-center p-10'>Jarvis March Algorithm</h1>
+            <div className='flex justify-center'>
+                <ColorRing
+                    visible={!isLoaded}
+                    height="160"
+                    width="160"
+                    ariaLabel="color-ring-loading"
+                    wrapperStyle={{}}
+                    wrapperClass="color-ring-wrapper"
+                    colors={['#E40303', '#FF8C00', '#FFED00', '#008026', '#24408E']}
                 />
             </div>
-            <button onClick={() => {
-                if (buttonClicked.hasBeenClicked)
-                    return;
-                setButtonClicked({ hasBeenClicked: true });
+            <div className='flex justify-center'>
+                <Unity unityProvider={unityProvider} style={{
+                    width: '60%',
+                    borderRadius: '1%',
+                }} />
+            </div>
+            <div className='flex justify-center mt-7'>
+                <div >
+                    <input
+                        id="file-upload"
+                        ref={fileInputRef}
+                        type="file"
+                        onChange={handleFileChange}
+                        accept=".txt"
+                        className='hidden'
+                    />
+                </div>
+                <button onClick={() => {
+                    if (buttonClicked.hasBeenClicked)
+                        return;
+                    setButtonClicked({ hasBeenClicked: true });
 
-                fileInputRef.current?.click()
-            }} className={styles.buttons}>Upload Input File</button>
-            <button onClick={handleClickRandom} className={styles.buttons}>Plot random points</button>
-        </div>
-    </div >;
+                    fileInputRef.current?.click()
+                }
+                } className='text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 
+                focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 
+                dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 mr-5'
+                >Upload Input File</button>
+                <button onClick={handleClickRandom}
+                    className='text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 
+                focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 
+                dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-5'>
+                    Plot random points</button>
+            </div>
+        </div >
+    );
 }
 
 export default JarvisMarch
