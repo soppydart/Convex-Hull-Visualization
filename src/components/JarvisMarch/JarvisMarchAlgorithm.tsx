@@ -29,8 +29,8 @@ function JarvisMarch() {
         let points: Point[] = [];
 
         for (let i = 0; i < 10; i++) {
-            let randomX: number = Math.round(((Math.random() * 10 - 5) * 100));
-            let randomY: number = Math.round(((Math.random() * 6 - 3) * 100));
+            let randomX: number = Math.round(((Math.random() * 12 - 6) * 100));
+            let randomY: number = Math.round(((Math.random() * 8 - 4) * 100));
             console.log(randomX / 100);
             console.log(randomY / 100);
             console.log(typeof (randomX));
