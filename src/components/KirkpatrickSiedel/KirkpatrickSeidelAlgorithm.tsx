@@ -10,10 +10,10 @@ function KirkpatrickSeidel() {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const { unityProvider, sendMessage, isLoaded } = useUnityContext({
-        loaderUrl: "JarvisMarch/Build/JarvisMarch.loader.js",
-        dataUrl: "JarvisMarch/Build/JarvisMarch.data",
-        frameworkUrl: "JarvisMarch/Build/JarvisMarch.framework.js",
-        codeUrl: "JarvisMarch/Build/JarvisMarch.wasm",
+        loaderUrl: "KirkpatrickSeidel/Build/KirkpatrickSeidel.loader.js",
+        dataUrl: "KirkpatrickSeidel/Build/KirkpatrickSeidel.data",
+        frameworkUrl: "KirkpatrickSeidel/Build/KirkpatrickSeidel.framework.js",
+        codeUrl: "KirkpatrickSeidel/Build/KirkpatrickSeidel.wasm",
     });
 
     function handleClickRandom() {
