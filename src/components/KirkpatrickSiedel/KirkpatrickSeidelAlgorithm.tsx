@@ -3,6 +3,7 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 import { CopyBlock, dracula } from "react-code-blocks";
 import KirkpatrickAnalysisTable from './KirkpatrickAnalysisTable';
 import KirkpatrickSiedelImplementation from './KirkpatrickSiedelImplementation';
+import KirkpatrickAnalysisChart from './KirkpatrickAnalysisChart';
 
 function KirkpatrickSeidel() {
     const [buttonClicked, setButtonClicked] = useState<{ hasBeenClicked: boolean }>({
@@ -59,6 +60,11 @@ function KirkpatrickSeidel() {
 
             reader.readAsText(file);
         }
+    }
+
+    function handleReloadScene() {
+        setButtonClicked({ hasBeenClicked: false });
+        sendMessage("mainObject", "Reload");
     }
 
     // Function to parse file contents and convert points to integers
@@ -126,15 +132,69 @@ function KirkpatrickSeidel() {
                 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 
                 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-5'>
                     Plot random points</button>
+                <button onClick={handleReloadScene}
+                    className='text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 
+                focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 
+                dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-5'>
+                    Reload Demo</button>
             </div>
-            {/* <KirkpatrickAnalysisTable /> */}
-            <h3 className="text-5xl font-medium text-white p-10 text-center">
+
+            <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
+                Description
+            </h3>
+            <div className="text-white max-w-6xl mx-auto mt-3">
+                <p className='text-xl'>
+                    The Kirkpatrick-Seidel algorithm  is an efficient method for computing the convex hull of
+                    a set of points in a 2D plane. It is especially effective for larger data sets as it works in
+                    O(nlogh) time, where n is the number of points and h is the number of points on the convex hull.
+                    Here’s how it functions:
+
+                    <ul className="list-disc list-inside max-w-4xl mx-auto mt-10">
+                        <li className='my-5'>
+                            <strong>Divide and Conquer:</strong> The algorithm employs a divide-and-conquer approach, where the set of points is divided into smaller subsets, the convex hull for each subset is computed, and then these hulls are merged to form the final convex hull.
+                        </li>
+                        <li className='my-5'>
+                            <strong>Prune-and-Search Technique:</strong> At the heart of the algorithm is a prune-and-search technique
+                            that efficiently finds the upper and lower bridges between two sets of points (which are the
+                            tangents that join the two hulls). These bridges help in eliminating points that are not
+                            part of the convex hull, thus reducing the problem size at each step.
+                        </li>
+                        <li className='my-5'>
+                            <strong>Finding Bridges:</strong> To find the upper and lower bridges efficiently,
+                            the algorithm calculates the median of the x-coordinates of the points and uses this
+                            to split the set of points into left and right subsets. Then, it identifies the
+                            bridge by connecting the points from each subset that form the tangent lines between
+                            the two subsets.
+                        </li>
+                        <li className='my-5'>
+                            <strong>Recursive Hull Construction:</strong> After finding the bridges,
+                            the points that are inside the area defined by these bridges and the baseline
+                            are not part of the convex hull and are discarded. The remaining points are
+                            then used recursively to build the hulls for the left and right subsets.
+                        </li>
+                        <li className='my-5'>
+                            <strong>Merging:</strong> The final step is to merge the hulls of the subsets to
+                            form the complete convex hull. This is done by combining the hulls obtained from
+                            the left and right subsets with the bridges that were found earlier.
+                        </li>
+                    </ul>
+
+                </p>
+            </div>
+
+            <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
                 Analysis
             </h3>
-            <div className="mx-auto max-w-md mt-10">
-                <KirkpatrickAnalysisTable />
+            <div className="mx-auto max-w-6xl mt-7 flex">
+                <div style={{ flex: 1 }} className='mx-auto h-full mr-2'>
+                    <KirkpatrickAnalysisTable />
+                </div>
+                <div className='mx-auto h-full bg-white rounded-md p-4 ml-2' style={{ flex: 1 }}>
+                    <KirkpatrickAnalysisChart />
+                </div>
             </div>
-            <h3 className="text-5xl font-medium text-white p-10 text-center">
+
+            <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
                 Implementation
             </h3>
             <div className='mx-auto max-w-4xl mt-5'>
