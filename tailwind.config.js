@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      display: ['Roboto', 'sans-serif'],
+      body: ['Roboto', 'sans-serif'],
+      code: ['"FiraCode"', 'monospace']
+    },
   },
   plugins: [],
 }
