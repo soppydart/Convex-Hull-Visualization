@@ -1,8 +1,8 @@
 import { ChangeEvent, useRef, useState } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
-import { CopyBlock, dracula } from "react-code-blocks";
+// import { CopyBlock, dracula } from "react-code-blocks";
 import KirkpatrickAnalysisTable from './KirkpatrickAnalysisTable';
-import KirkpatrickSiedelImplementation from './KirkpatrickSiedelImplementation';
+// import KirkpatrickSiedelImplementation from './KirkpatrickSiedelImplementation';
 import KirkpatrickAnalysisChart from './KirkpatrickAnalysisChart';
 
 function KirkpatrickSeidel() {
