@@ -1,9 +1,8 @@
 import { ChangeEvent, useRef, useState } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
 // import { CopyBlock, dracula } from "react-code-blocks";
-import KirkpatrickAnalysisTable from './KirkpatrickAnalysisTable';
 // import KirkpatrickSiedelImplementation from './KirkpatrickSiedelImplementation';
-import KirkpatrickAnalysisChart from './KirkpatrickAnalysisChart';
+// import KirkpatrickSeidelDocumentation from './KirkpatrickSeidelDocumentation';
 
 function KirkpatrickSeidel() {
     const [buttonClicked, setButtonClicked] = useState<{ hasBeenClicked: boolean }>({
@@ -183,18 +182,6 @@ function KirkpatrickSeidel() {
             </div>
 
             <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
-                Analysis
-            </h3>
-            <div className="mx-auto max-w-6xl mt-7 flex">
-                <div style={{ flex: 1 }} className='mx-auto h-full mr-2'>
-                    <KirkpatrickAnalysisTable />
-                </div>
-                <div className='mx-auto h-full bg-white rounded-md p-4 ml-2' style={{ flex: 1 }}>
-                    <KirkpatrickAnalysisChart />
-                </div>
-            </div>
-
-            <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
                 Implementation
             </h3>
             {/* <div className='mx-auto max-w-4xl mt-5'>
@@ -207,6 +194,10 @@ function KirkpatrickSeidel() {
                     codeBlock={true}
                 />
             </div> */}
+            <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
+                Documentation
+            </h3>
+            {/* <KirkpatrickSeidelDocumentation /> */}
         </div >
     );
 }
