@@ -1,5 +1,8 @@
 import { ChangeEvent, useRef, useState } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
+import { CopyBlock, dracula } from "react-code-blocks";
+import JarvisMarchImplementation from './JarvisMarchImplementation';
+import JarvisMarchDocumentation from './JarvisMarchDocumentation';
 
 function JarvisMarch() {
     const [buttonClicked, setButtonClicked] = useState<{ hasBeenClicked: boolean }>({
@@ -28,8 +31,8 @@ function JarvisMarch() {
         let points: Point[] = [];
 
         for (let i = 0; i < 10; i++) {
-            let randomX: number = Math.round(((Math.random() * 12 - 6) * 100));
-            let randomY: number = Math.round(((Math.random() * 8 - 4) * 100));
+            let randomX: number = Math.round(((Math.random() * 10 - 5) * 100));
+            let randomY: number = Math.round(((Math.random() * 6 - 3) * 100));
             console.log(randomX / 100);
             console.log(randomY / 100);
             console.log(typeof (randomX));
@@ -58,6 +61,11 @@ function JarvisMarch() {
         }
     }
 
+    function handleReloadScene() {
+        setButtonClicked({ hasBeenClicked: false });
+        sendMessage("mainObject", "Reload");
+    }
+
     // Function to parse file contents and convert points to integers
     function parseFileContents(contents: string) {
         const points: number[] = [];
@@ -78,8 +86,8 @@ function JarvisMarch() {
     }
 
     return (
-        <div className="bg-slate-900 min-h-screen">
-            <h1 className='text-5xl font-medium text-white text-center p-10'>Jarvis March Algorithm</h1>
+        <div className="bg-slate-900 min-h-screen font-code">
+            <h1 className='text-6xl font-medium text-white text-center p-10'>Jarvis March Algorithm</h1>
             <div className='flex justify-center'>
                 {!isLoaded &&
                     <div role="status">
@@ -121,9 +129,72 @@ function JarvisMarch() {
                 <button onClick={handleClickRandom}
                     className='text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 
                 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 
-                dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-5'>
+                dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-5 mr-5'>
                     Plot random points</button>
+                <button onClick={handleReloadScene}
+                    className='text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 
+                focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 
+                dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 ml-5'>
+                    Reload Demo</button>
             </div>
+
+            <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
+                Description
+            </h3>
+            <div className="text-white max-w-6xl mx-auto mt-3">
+                <p className='text-xl'>
+                    The Jarvis March algorithm is used to compute the convex hull of a set of points in a 2D plane.
+                    The convex hull is the smallest convex polygon that encloses all the points. The time complexity of
+                    the Jarvis March algorithm is O(nh), where n is the number of points in the set and h is the number of points in the
+                    convex hull. This is because in the worst case, each point is checked against
+                    every other point to find the most counterclockwise point.
+                    The algorithm works as follows:
+
+                    <ul className="list-disc list-inside max-w-4xl mx-auto mt-10">
+                        <li className='my-5'>
+                            <strong>Find the Leftmost Point:</strong> Start with the leftmost point of the set,
+                            as this point must be part of the convex hull. This is because all other points
+                            are to the right and cannot form a boundary on the left side of the hull.
+                        </li>
+                        <li className='my-5'>
+                            <strong>Wrap Around Points:</strong>  From the starting point, the algorithm
+                            'wraps' around the set of points by selecting the point that is the most
+                            counterclockwise compared to all others. The angle between the line formed
+                            by the current point and each of the other points is checked, and the point
+                            with the smallest angle is chosen as the next point of the hull.
+                        </li>
+                        <li className='my-5'>
+                            <strong>Continue Wrapping:</strong> Repeat the process of stepping to the most
+                            counterclockwise point until you return to the starting point. In each iteration,
+                            the chosen point is the one that makes the smallest angle with the line formed
+                            by the previous point and itself.
+                        </li>
+                        <li className='my-5'>
+                            <strong>Form the Convex Hull:</strong> The process ends when the algorithm
+                            returns to the starting point. The sequence of selected points forms the boundary
+                            of the convex hull.
+                        </li>
+                    </ul>
+                </p>
+            </div>
+
+            <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
+                Implementation
+            </h3>
+            <div className='mx-auto max-w-4xl mt-5'>
+                <CopyBlock
+                    language="cpp"
+                    text={JarvisMarchImplementation}
+                    wrapLongLines={false}
+                    showLineNumbers={true}
+                    theme={dracula}
+                    codeBlock={true}
+                />
+            </div>
+            <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
+                Documentation
+            </h3>
+            <JarvisMarchDocumentation />
         </div >
     );
 }
