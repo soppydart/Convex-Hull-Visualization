@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router"
 
 function Home() {
     return (
-        <div className="bg-slate-900 min-h-screen">
+        <div className="bg-slate-900 min-h-screen font-code">
             <h1 className='text-5xl font-medium text-white text-center p-10'>Convex Hull Visualization</h1>
 
             <div className="flex justify-center">
