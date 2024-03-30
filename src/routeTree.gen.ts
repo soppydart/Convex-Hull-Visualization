@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as KirkpatrickSeidelImport } from './routes/kirkpatrick-seidel'
 import { Route as JarvisMarchImport } from './routes/jarvis-march'
+import { Route as AnalysisImport } from './routes/analysis'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
@@ -27,6 +28,11 @@ const JarvisMarchRoute = JarvisMarchImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const AnalysisRoute = AnalysisImport.update({
+  path: '/analysis',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
@@ -38,6 +44,10 @@ declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/analysis': {
+      preLoaderRoute: typeof AnalysisImport
       parentRoute: typeof rootRoute
     }
     '/jarvis-march': {
@@ -55,6 +65,7 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
+  AnalysisRoute,
   JarvisMarchRoute,
   KirkpatrickSeidelRoute,
 ])
