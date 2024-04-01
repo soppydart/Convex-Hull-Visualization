@@ -2,7 +2,7 @@ import { ChangeEvent, useRef, useState } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
 // import { CopyBlock, dracula } from "react-code-blocks";
 // import KirkpatrickSiedelImplementation from './KirkpatrickSiedelImplementation';
-// import KirkpatrickSeidelDocumentation from './KirkpatrickSeidelDocumentation';
+import KirkpatrickSeidelDocumentation from './KirkpatrickSeidelDocumentation';
 
 function KirkpatrickSeidel() {
     const [buttonClicked, setButtonClicked] = useState<{ hasBeenClicked: boolean }>({
@@ -197,7 +197,7 @@ function KirkpatrickSeidel() {
             <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
                 Documentation
             </h3>
-            {/* <KirkpatrickSeidelDocumentation /> */}
+            <KirkpatrickSeidelDocumentation />
         </div >
     );
 }
