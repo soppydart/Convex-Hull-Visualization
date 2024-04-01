@@ -40,19 +40,19 @@ export const data = {
     datasets: [
         {
             label: '10',
-            data: [120, 140, 160, 180, 200],
+            data: [3593, 3750, 3990, 4200, 4333],
             borderColor: 'rgb(232, 251, 42)',
             backgroundColor: 'rgba(228, 135, 0, 1)',
         },
         {
             label: '15',
-            data: [195, 220, 240, 275, 295],
+            data: [3700, 3900, 4178, 4400, 4506],
             borderColor: 'rgb(9, 175, 14)',
             backgroundColor: 'rgba(58, 244, 230, 1)',
         },
         {
             label: '20',
-            data: [250, 280, 310, 370, 410],
+            data: [4035, 4300, 4698, 4900, 5113],
             borderColor: 'rgb(243, 27, 6)',
             backgroundColor: 'rgba(229, 149, 222, 1)',
         },
