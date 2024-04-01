@@ -1,6 +1,6 @@
 function KirkpatrickSeidelDocumentation() {
     return (
-        <div className="text-white max-w-6xl mx-auto mt-3 text-xl">
+        <div className="text-white max-w-6xl mx-auto mt-3 text-xl pb-20">
             <h2 className="text-4xl underline">Functions</h2>
             <ul className="max-w-5xl mx-auto mt-3 text-xl list-decimal">
                 <li>
