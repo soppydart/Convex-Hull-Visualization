@@ -1,7 +1,7 @@
 import { ChangeEvent, useRef, useState } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
-import { CopyBlock, dracula } from "react-code-blocks";
-import JarvisMarchImplementation from './JarvisMarchImplementation';
+// import { CopyBlock, dracula } from "react-code-blocks";
+// import JarvisMarchImplementation from './JarvisMarchImplementation';
 import JarvisMarchDocumentation from './JarvisMarchDocumentation';
 
 function JarvisMarch() {
@@ -181,7 +181,7 @@ function JarvisMarch() {
             <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
                 Implementation
             </h3>
-            <div className='mx-auto max-w-4xl mt-5'>
+            {/* <div className='mx-auto max-w-4xl mt-5'>
                 <CopyBlock
                     language="cpp"
                     text={JarvisMarchImplementation}
@@ -190,7 +190,7 @@ function JarvisMarch() {
                     theme={dracula}
                     codeBlock={true}
                 />
-            </div>
+            </div> */}
             <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
                 Documentation
             </h3>
