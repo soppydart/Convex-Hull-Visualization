@@ -1,8 +1,8 @@
 function KirkpatrickAnalysisTable() {
   return (
     <div className="relative overflow-x-auto h-full rounded-md">
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-lg text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <table className="w-full text-sm text-left rtl:text-right text-gray-400">
+        <thead className="text-lg bg-gray-700 text-gray-400">
           <tr>
             <th scope="col" className="px-8 py-6">
 
@@ -19,8 +19,8 @@ function KirkpatrickAnalysisTable() {
           </tr>
         </thead>
         <tbody>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <th scope="row" className="px-8 py-5 font-medium text-gray-900 whitespace-nowrap dark:text-white text-lg">
+          <tr className="bg-gray-800 border-gray-700">
+            <th scope="row" className="px-8 py-5 font-medium whitespace-nowrap text-white text-lg">
               h<sub>1</sub> = 4
             </th>
             <td className="px-8 py-7">
@@ -33,8 +33,8 @@ function KirkpatrickAnalysisTable() {
               244 us
             </td>
           </tr>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <th scope="row" className="px-8 py-5 font-medium text-gray-900 whitespace-nowrap dark:text-white text-lg">
+          <tr className="bg-gray-800 border-gray-700">
+            <th scope="row" className="px-8 py-5 font-medium whitespace-nowrap text-white text-lg">
               h<sub>2</sub> = 6
             </th>
             <td className="px-8 py-7">
@@ -47,8 +47,8 @@ function KirkpatrickAnalysisTable() {
               312 us
             </td>
           </tr>
-          <tr className="bg-white dark:bg-gray-800">
-            <th scope="row" className="px-8 py-5 font-medium text-gray-900 whitespace-nowrap dark:text-white text-lg">
+          <tr className="bg-gray-800">
+            <th scope="row" className="px-8 py-5 font-medium whitespace-nowrap text-white text-lg">
               h<sub>3</sub> = 8
             </th>
             <td className="px-8 py-7">
