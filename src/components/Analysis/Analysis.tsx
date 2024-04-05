@@ -40,10 +40,10 @@ function Analysis() {
                 </ul>
 
                 <div className="max-w-md mx-auto lg:max-w-6xl mt-10 flex flex-col lg:flex-row sm:space-y-2">
-                    <div className='mx-auto h-full mb-2 lg:mb-0 lg:mr-2 w-full'>
+                    <div className='mx-auto h-full lg:mb-0 lg:mr-2 mt-2 w-full'>
                         <JarvisMarchAnalysisTable />
                     </div>
-                    <div className='mx-auto h-full bg-white rounded-md p-3 lg:ml-2 w-full flex justify-center'>
+                    <div className='mx-auto h-full mb-2 bg-white rounded-md lg:p-2 lg:pt-4 lg:pb-3  lg:ml-2 w-full flex justify-center'>
                         <JarvisMarchAnalysisChart />
                     </div>
                 </div>
@@ -81,10 +81,10 @@ function Analysis() {
                 </ul>
 
                 <div className="max-w-md mx-auto lg:max-w-6xl mt-10 flex flex-col lg:flex-row sm:space-y-2">
-                    <div className='mx-auto h-full mb-2 lg:mb-0 lg:mr-2 w-full'>
+                    <div className='mx-auto h-full lg:mb-0 lg:mr-2 mt-2 w-full'>
                         <KirkpatrickAnalysisTable />
                     </div>
-                    <div className='mx-auto h-full bg-white rounded-md p-3 lg:ml-2 w-full flex justify-center'>
+                    <div className='mx-auto h-full mb-2 bg-white rounded-md lg:p-2 lg:pt-4 lg:pb-3  lg:ml-2 w-full flex justify-center'>
                         <KirkpatrickAnalysisChart />
                     </div>
                 </div>
