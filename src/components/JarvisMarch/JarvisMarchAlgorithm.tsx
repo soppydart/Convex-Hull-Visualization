@@ -43,7 +43,6 @@ function JarvisMarch() {
             sendMessage("mainObject", "InitializePoints", point.x);
             sendMessage("mainObject", "InitializePoints", point.y);
         });
-        sendMessage("mainObject", "InitializePoints", -9999);
     }
 
     function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
