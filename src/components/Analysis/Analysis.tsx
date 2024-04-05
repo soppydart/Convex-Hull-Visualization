@@ -5,12 +5,12 @@ import KirkpatrickAnalysisTable from "../KirkpatrickSiedel/KirkpatrickAnalysisTa
 
 function Analysis() {
     return (
-        <div className="bg-slate-900 min-h-screen font-code text-white text-xl pb-20">
-            <h1 className='text-6xl font-medium text-white text-center p-10'>Analysis</h1>
-            <div className="max-w-6xl mx-auto">
-                <h2 className="text-4xl">Jarvis March</h2>
+        <div className="bg-slate-900 min-h-screen font-code text-white pb-8 lg:pb-20">
+            <h1 className='text-2xl lg:text-5xl sm:text-4xl font-medium text-center p-3 lg:p-5'>Analysis</h1>
+            <div className="text-sm sm:text-lg max-w-80 sm:max-w-2xl text-white lg:max-w-6xl mx-auto mt-3 lg:text-xl">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl">Jarvis March</h2>
 
-                <div className="flex justify-center my-10 text-xl">
+                <div className="flex justify-center my-5 lg:my-10">
                     <ul>
                         <li>
                             n : number of points
@@ -21,7 +21,7 @@ function Analysis() {
                     </ul>
                 </div>
 
-                <ul className="max-w-5xl mx-auto mt-3 text-xl list-decimal list-inside">
+                <ul className="max-w-72 sm:max-w-xl lg:max-w-5xl mx-auto mt-3 list-decimal list-inside">
                     <li className="my-3">
                         Time Complexity: O(nh)
                     </li>
@@ -39,18 +39,18 @@ function Analysis() {
                     </li>
                 </ul>
 
-                <div className="mx-auto max-w-6xl mt-10 flex flex-col md:flex-row">
-                    <div className='mx-auto h-full mb-2 md:mb-0 md:mr-2 w-full'>
+                <div className="max-w-md mx-auto lg:max-w-6xl mt-10 flex flex-col lg:flex-row sm:space-y-2">
+                    <div className='mx-auto h-full mb-2 lg:mb-0 lg:mr-2 w-full'>
                         <JarvisMarchAnalysisTable />
                     </div>
-                    <div className='mx-auto bg-white rounded-md p-3 md:ml-2 w-full'>
+                    <div className='mx-auto h-full bg-white rounded-md p-3 lg:ml-2 w-full flex justify-center'>
                         <JarvisMarchAnalysisChart />
                     </div>
                 </div>
 
-                <h2 className="text-4xl mt-20">Kirkpatrick-Seidel</h2>
+                <h2 className="text-xl sm:text-2xl lg:text-3xl mt-10 lg:mt-20">Kirkpatrick-Seidel</h2>
 
-                <div className="flex justify-center my-10 text-xl">
+                <div className="flex justify-center my-5 lg:my-10">
                     <ul>
                         <li>
                             n : number of points
@@ -61,7 +61,7 @@ function Analysis() {
                     </ul>
                 </div>
 
-                <ul className="max-w-5xl mx-auto mt-3 text-xl list-decimal list-inside">
+                <ul className="max-w-72 sm:max-w-xl lg:max-w-5xl mx-auto mt-3 list-decimal list-inside">
                     <li className="my-3">
                         Time Complexity: O(nlogh)
                     </li>
@@ -80,11 +80,11 @@ function Analysis() {
                     </li>
                 </ul>
 
-                <div className="mx-auto max-w-6xl mt-10 flex flex-col md:flex-row">
-                    <div className='mx-auto h-full mb-2 md:mb-0 md:mr-2 w-full'>
+                <div className="max-w-md mx-auto lg:max-w-6xl mt-10 flex flex-col lg:flex-row sm:space-y-2">
+                    <div className='mx-auto h-full mb-2 lg:mb-0 lg:mr-2 w-full'>
                         <KirkpatrickAnalysisTable />
                     </div>
-                    <div className='mx-auto bg-white rounded-md p-3 md:ml-2 w-full'>
+                    <div className='mx-auto h-full bg-white rounded-md p-3 lg:ml-2 w-full flex justify-center'>
                         <KirkpatrickAnalysisChart />
                     </div>
                 </div>
