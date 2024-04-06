@@ -1,12 +1,20 @@
-import { ChangeEvent, useRef } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
-// import { CopyBlock, dracula } from "react-code-blocks";
-// import JarvisMarchImplementation from './JarvisMarchImplementation';
+import { CopyBlock, dracula } from "react-code-blocks";
+import JarvisMarchImplementation from './JarvisMarchImplementation';
 import JarvisMarchDocumentation from './JarvisMarchDocumentation';
 
 function JarvisMarch() {
-
+    const [isOpen, setIsOpen] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const openModal = () => {
+        setIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+    };
 
     const { unityProvider, sendMessage, isLoaded } = useUnityContext({
         loaderUrl: "JarvisMarch/Build/JarvisMarch.loader.js",
@@ -104,6 +112,59 @@ function JarvisMarch() {
                         className='hidden'
                     />
                 </div>
+
+                <button onClick={openModal} type="button" className='mr-3 mb-1'>
+                    <svg className="w-4 h-4 ms-2 text-gray-400 hover:text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg><span className="sr-only">Show information</span></button>
+
+                {isOpen && (
+                    <div
+                        id="default-modal"
+                        tabIndex={-1}
+                        aria-hidden="true"
+                        className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden flex items-center justify-center"
+                    >
+                        <div className="relative p-4 w-full max-w-2xl">
+                            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                                        Format and Range of Input
+                                    </h3>
+                                    <button
+                                        onClick={closeModal}
+                                        type="button"
+                                        className="text-gray-400 bg-transparent rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center hover:bg-gray-600 hover:text-white"
+                                    >
+                                        <svg
+                                            className="w-3 h-3"
+                                            aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 14 14"
+                                        >
+                                            <path
+                                                stroke="currentColor"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                                            />
+                                        </svg>
+                                        <span className="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <div className="p-4 md:p-5 space-y-4">
+                                    <p className="text-base leading-relaxed text-gray-400">
+                                        Upload a .txt file containing coordinates of points in the format: (x1, y1), (x2, y2), (x3, y3), etc.
+                                    </p>
+                                    <p className="text-base leading-relaxed text-gray-400">
+                                        The accepted range of coordinates is x = -25 to x = 25, and y = -10 to y = 10.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
                 <button onClick={() => {
 
                     fileInputRef.current?.click()
@@ -167,7 +228,7 @@ function JarvisMarch() {
             <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
                 Implementation
             </h3>
-            {/* <div className='mx-auto max-w-4xl mt-5'>
+            <div className='mx-auto max-w-4xl mt-5'>
                 <CopyBlock
                     language="cpp"
                     text={JarvisMarchImplementation}
@@ -176,7 +237,7 @@ function JarvisMarch() {
                     theme={dracula}
                     codeBlock={true}
                 />
-            </div> */}
+            </div>
             <h3 className="text-5xl font-medium text-white p-10 text-center mt-10">
                 Documentation
             </h3>
