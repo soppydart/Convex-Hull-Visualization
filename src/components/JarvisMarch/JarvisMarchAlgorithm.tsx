@@ -1,13 +1,10 @@
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useRef } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
 // import { CopyBlock, dracula } from "react-code-blocks";
 // import JarvisMarchImplementation from './JarvisMarchImplementation';
 import JarvisMarchDocumentation from './JarvisMarchDocumentation';
 
 function JarvisMarch() {
-    const [buttonClicked, setButtonClicked] = useState<{ hasBeenClicked: boolean }>({
-        hasBeenClicked: false,
-    });
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -19,11 +16,6 @@ function JarvisMarch() {
     });
 
     function handleClickRandom() {
-        if (buttonClicked.hasBeenClicked)
-            return;
-
-        setButtonClicked({ hasBeenClicked: true });
-
         class Point {
             constructor(public x: number, public y: number) { }
         }
@@ -61,7 +53,6 @@ function JarvisMarch() {
     }
 
     function handleReloadScene() {
-        setButtonClicked({ hasBeenClicked: false });
         sendMessage("mainObject", "Reload");
     }
 
@@ -81,7 +72,6 @@ function JarvisMarch() {
         points.forEach(point => {
             sendMessage("mainObject", "InitializePoints", point);
         });
-        sendMessage("mainObject", "InitializePoints", -9999);
     }
 
     return (
@@ -115,9 +105,6 @@ function JarvisMarch() {
                     />
                 </div>
                 <button onClick={() => {
-                    if (buttonClicked.hasBeenClicked)
-                        return;
-                    setButtonClicked({ hasBeenClicked: true });
 
                     fileInputRef.current?.click()
                 }

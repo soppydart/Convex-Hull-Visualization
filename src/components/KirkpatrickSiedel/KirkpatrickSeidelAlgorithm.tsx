@@ -1,13 +1,10 @@
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useRef } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
 // import { CopyBlock, dracula } from "react-code-blocks";
 // import KirkpatrickSiedelImplementation from './KirkpatrickSiedelImplementation';
 import KirkpatrickSeidelDocumentation from './KirkpatrickSeidelDocumentation';
 
 function KirkpatrickSeidel() {
-    const [buttonClicked, setButtonClicked] = useState<{ hasBeenClicked: boolean }>({
-        hasBeenClicked: false,
-    });
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -19,11 +16,6 @@ function KirkpatrickSeidel() {
     });
 
     function handleClickRandom() {
-        if (buttonClicked.hasBeenClicked)
-            return;
-
-        setButtonClicked({ hasBeenClicked: true });
-
         class Point {
             constructor(public x: number, public y: number) { }
         }
@@ -43,7 +35,6 @@ function KirkpatrickSeidel() {
             sendMessage("mainObject", "InitializePoints", point.x);
             sendMessage("mainObject", "InitializePoints", point.y);
         });
-        // sendMessage("mainObject", "InitializePoints", -9999);
     }
 
     function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
@@ -62,7 +53,6 @@ function KirkpatrickSeidel() {
     }
 
     function handleReloadScene() {
-        setButtonClicked({ hasBeenClicked: false });
         sendMessage("mainObject", "Reload");
     }
 
@@ -116,10 +106,6 @@ function KirkpatrickSeidel() {
                     />
                 </div>
                 <button onClick={() => {
-                    if (buttonClicked.hasBeenClicked)
-                        return;
-                    setButtonClicked({ hasBeenClicked: true });
-
                     fileInputRef.current?.click()
                 }
                 } className='text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 
