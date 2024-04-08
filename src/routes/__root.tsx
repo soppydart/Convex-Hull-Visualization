@@ -1,10 +1,15 @@
 import { Outlet, createRootRoute } from '@tanstack/react-router'
-import { Fragment } from 'react/jsx-runtime'
 import Navbar from '../components/Navbar/Navbar'
+import NotFound from '../components/NotFound/NotFound'
 
 export const Route = createRootRoute({
-    component: () => <Fragment>
-        <Navbar />
-        <Outlet />
-    </Fragment>
+    component: () => <>
+        <div className="bg-slate-900 min-h-screen">
+            <Navbar />
+            <Outlet />
+        </div>
+    </>,
+    notFoundComponent: () => {
+        return <NotFound />
+    },
 })
