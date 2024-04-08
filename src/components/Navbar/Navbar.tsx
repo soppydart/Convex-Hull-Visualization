@@ -5,6 +5,13 @@ const Navbar = () => {
     const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
     const navRef = useRef<HTMLDivElement>(null);
 
+    const activeProps = {
+        style: {
+            fontWeight: "bold",
+            textDecoration: 'underline',
+        }
+    }
+
     const toggleNav = () => {
         setIsNavOpen(!isNavOpen);
     };
@@ -28,7 +35,7 @@ const Navbar = () => {
             <div className="container mx-auto flex justify-between items-center">
                 <Link onClick={() => {
                     if (isNavOpen) toggleNav();
-                }} to="/" className="text-white hover:text-gray-300">Home</Link>
+                }} to="/" className="text-white hover:text-gray-300" activeProps={activeProps}>Home</Link>
                 <div className="md:hidden">
                     <button onClick={toggleNav} className="text-white hover:text-gray-300 ml-40">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -37,10 +44,14 @@ const Navbar = () => {
                     </button>
                 </div>
                 <div className="md:flex hidden space-x-6">
-                    <Link to="/jarvis-march" className="text-white hover:text-gray-300">Jarvis March</Link>
-                    <Link to="/kirkpatrick-seidel" className="text-white hover:text-gray-300">Kirkpatrick-Seidel</Link>
-                    <Link to="/analysis" className="text-white hover:text-gray-300">Analysis</Link>
-                    <Link to="/about" className="text-white hover:text-gray-300">About</Link>
+                    <Link to="/jarvis-march" className="text-white hover:text-gray-300"
+                        activeProps={activeProps}>Jarvis March</Link>
+                    <Link to="/kirkpatrick-seidel" className="text-white hover:text-gray-300"
+                        activeProps={activeProps}>Kirkpatrick-Seidel</Link>
+                    <Link to="/analysis" className="text-white hover:text-gray-300"
+                        activeProps={activeProps}>Analysis</Link>
+                    <Link to="/about" className="text-white hover:text-gray-300"
+                        activeProps={activeProps}>About</Link>
                 </div>
             </div>
             {isNavOpen &&
@@ -58,25 +69,25 @@ const Navbar = () => {
                         <ul className="space-y-2 font-medium ms-3 mt-10">
                             <li className="flex justify-left">
                                 <Link onClick={toggleNav} to="/jarvis-march" className="p-2 rounded-lg
-                                text-white hover:text-gray-400 hover:underline">
+                                text-white hover:text-gray-400 hover:underline" activeProps={activeProps}>
                                     Jarvis March
                                 </Link>
                             </li>
                             <li className="flex justify-left">
                                 <Link onClick={toggleNav} to="/kirkpatrick-seidel" className="p-2 rounded-lg
-                                text-white hover:text-gray-400 hover:underline">
+                                text-white hover:text-gray-400 hover:underline" activeProps={activeProps}>
                                     Kirkpatrick-Seidel
                                 </Link>
                             </li>
                             <li className="flex justify-left">
                                 <Link onClick={toggleNav} to="/analysis" className="p-2 rounded-lg
-                                text-white hover:text-gray-400 hover:underline">
+                                text-white hover:text-gray-400 hover:underline" activeProps={activeProps}>
                                     Analysis
                                 </Link>
                             </li>
                             <li className="flex justify-left">
                                 <Link onClick={toggleNav} to="/about" className="p-2 rounded-lg
-                                text-white hover:text-gray-400 hover:underline">
+                                text-white hover:text-gray-400 hover:underline" activeProps={activeProps}>
                                     About
                                 </Link>
                             </li>
